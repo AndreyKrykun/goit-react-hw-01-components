@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
-import { StatisticsTitle, StatList, StatItem } from './Statistics.styled';
+import { StatisticsTitle, StatList } from './Statistics.styled';
+import { getRandomHexColor } from 'components/getRandomHexColor';
 import { Box } from '../Box';
 
 export const Statistics = ({ title, stats}) => {
@@ -16,10 +17,15 @@ export const Statistics = ({ title, stats}) => {
 
     <StatList>
       {stats.map(({ id, label, percentage }) => (
-        <StatItem key={id}>
+        <Box key={id}
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            bg={getRandomHexColor()}
+            p={3}>
                 <span className="label">{label}</span>
                 <span className="percentage">{percentage}%</span>
-    </StatItem>
+    </Box>
       )
       )}
   </StatList>
